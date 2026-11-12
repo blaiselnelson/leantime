@@ -1,0 +1,21 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [trunk]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ssh.us.stackcp.com
+          port: 22
+          username: cosmic-deck.startcp.com
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          #fingerprint: ${{ secrets.SSH_HOST_FINGERPRINT }}
+          script: |
+            cd /home/sites/42b/5/5439b53aaa/leantime
+            git pull origin trunk
