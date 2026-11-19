@@ -18,4 +18,4 @@ jobs:
           #fingerprint: ${{ secrets.SSH_HOST_FINGERPRINT }}
           script: |
             cd /home/sites/42b/5/5439b53aaa/leantime
-            git pull origin trunk
+            git pull origin master
